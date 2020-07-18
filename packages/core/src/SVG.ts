@@ -153,7 +153,7 @@ export const getPointAtLength = (
   const p1y = get(path.p1y, index);
   const p2y = get(path.p2y, index);
   const p3y = get(path.p3y, index);
-  const t = interpolate(length, {
+  const t = interpolateNode(length, {
     inputRange: [start, end],
     outputRange: [0, 1],
   });
@@ -173,7 +173,7 @@ export const interpolatePath = (
   const [path] = paths;
   const commands = path.segments.map((_, index) => {
     const interpolatePoint = (point: BezierPoint) =>
-      interpolate(value, {
+      interpolateNode(value, {
         inputRange,
         outputRange: paths.map((p) => p[point][index]),
         ...config,
